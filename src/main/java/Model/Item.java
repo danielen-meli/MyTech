@@ -1,10 +1,6 @@
 package Model;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-public class TechItem {
+public class Item {
     private Long id;
     private String title;
     private String description;
@@ -14,9 +10,7 @@ public class TechItem {
     private Long quantity;
     private String currency_id;
 
-
-
-    public TechItem(Long id, String title, String category, Double price, Long quantity) {
+    public Item(Long id, String title, String category, Double price, Long quantity) {
         this.id = id;
         this.title = title;
         this.unit_price = price;
