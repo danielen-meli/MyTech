@@ -1,8 +1,8 @@
-package Controller;
+package Routes;
 
 import static spark.Spark.*;
 
-public class CheckoutController {
+public class Routes {
 // https://www.baeldung.com/spark-framework-rest-api
 // http://sparkjava.com/documentation
 

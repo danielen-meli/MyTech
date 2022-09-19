@@ -1,20 +1,20 @@
-package Controller;
+package Routes;
 
-import Model.Item;
+import Model.Preference;
 import Model.StandardResponse;
 import Model.StatusResponse;
-import Service.ItemService;
+import Service.PreferenceService;
 import com.google.gson.Gson;
 
 import static spark.Spark.*;
 
-public class ItemController {
+public class ItemRoute {
 
     public static void main(String[] args) {
         post("/items", (request, response) -> {
             response.type("application/json");
-            Item item = new Gson().fromJson(request.body(), Item.class);
-                ItemService.addItem(item);
+            Preference item = new Gson().fromJson(request.body(), Preference.class);
+                PreferenceService.addItem(item);
 
                 return new Gson()
                         .toJson(new StandardResponse(StatusResponse.SUCCESS));
@@ -24,7 +24,7 @@ public class ItemController {
             response.type("application/json");
             return new Gson().toJson(
                 new StandardResponse(StatusResponse.SUCCESS,new Gson()
-                        .toJsonTree(ItemService.getItems())));
+                        .toJsonTree(PreferenceService.getItems())));
 
         });
 
@@ -32,7 +32,7 @@ public class ItemController {
             response.type("application/json");
             return new Gson().toJson(
                     new StandardResponse(StatusResponse.SUCCESS, String.valueOf(new Gson()
-                            .toJsonTree(ItemService.getItem(request.params(":id"))))));
+                            .toJsonTree(PreferenceService.getItem(request.params(":id"))))));
 
         });
 
