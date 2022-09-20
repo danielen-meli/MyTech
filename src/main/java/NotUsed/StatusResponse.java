@@ -1,3 +1,4 @@
+/*
 package Model;
 
 public enum StatusResponse {
@@ -18,3 +19,4 @@ public enum StatusResponse {
     }
 
 }
+*/

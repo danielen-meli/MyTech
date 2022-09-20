@@ -1,3 +1,4 @@
+/*
 package Model;
 
 import com.google.gson.JsonElement;
@@ -48,4 +49,4 @@ public class StandardResponse {
         this.data = data;
     }
 
-}
+}*/

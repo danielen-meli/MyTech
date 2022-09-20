@@ -1,4 +1,4 @@
-package Service;
+package NotUsed;
 
 public class ShoppingService {
 

@@ -1,3 +1,5 @@
+/*
+
 package Model;
 
 import com.mercadopago.client.customer.CustomerCardCreateRequest;
@@ -8,7 +10,7 @@ public class Shopping {
     private CustomerCardIssuer issuer;
     private String paymentMethodId;
 
-    public Shopping(String token, CustomerCardIssuer issuer, String paymentMethodId) {
+    public Shopping(String token, CustomerCardIssuerdIssuer issuer, String paymentMethodId) {
         this.token = token;
         this.issuer = issuer;
         this.paymentMethodId = paymentMethodId;
@@ -46,3 +48,4 @@ public class Shopping {
                 .build();
     }
 }
+*/
