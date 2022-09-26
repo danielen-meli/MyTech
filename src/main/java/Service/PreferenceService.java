@@ -7,6 +7,7 @@ import com.mercadopago.client.preference.PreferenceRequest;
 import com.mercadopago.exceptions.MPApiException;
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.preference.Preference;
+import com.mercadopago.resources.preference.PreferencePaymentMethods;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import static Model.Preference.addItems;
 
 public class PreferenceService {
     static PreferenceClient client = new PreferenceClient();
+    static Preference preference = new Preference();
     Token token = new Token();
 
     public static String createPreference() throws MPException, MPApiException {
@@ -29,8 +31,10 @@ public class PreferenceService {
         return new Gson().toJson(result);
     }
 
-    public String updatePreference(String id, PreferenceRequest preference) throws MPException, MPApiException {
-        Preference result = new PreferenceClient().update(id, preference);
-        return new Gson().toJson(result);
+    public static String updatePreference(String id, PreferenceRequest body) throws MPException, MPApiException {
+        Token.authoToken();
+        Preference pref_up  = new PreferenceClient().update(id, body);
+        return new Gson().toJson(pref_up);
     }
+
 }

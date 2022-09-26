@@ -27,19 +27,21 @@ public class Routes {
                 return PreferenceService.getPreference(prefId);
             });
 
-            // put("/preferences/:id", (request, response) -> {
-            //   return new PreferenceService().updatePreference(request.params(":id"),
-                //       new Gson().fromJson(request.body(), PreferenceRequest.class));
-            // });
+            put("/preferences/:id", (request, response) -> {
+                String prefId = request.params("id");
+                PreferenceRequest prefToEdit = new Gson().fromJson(request.body(), PreferenceRequest.class);
+                return PreferenceService.updatePreference(prefId, prefToEdit);
+            });
 
-
-            post("/payment", (request, response) -> {
-                response.type("application/json");
-                Payment payment = new Gson().fromJson(request.params(":id"), Payment.class);
-                return PaymentService.createPayment();
+            post("/payments", (request, response) -> {
+                Preference preference = new Gson().fromJson(request.body(), Preference.class);
+                Payment payment = new Gson().fromJson(request.body(), Payment.class);
+                return PaymentService.processPayment(payment);
             });
 
 
-    }
+        }
+
 
 }
+

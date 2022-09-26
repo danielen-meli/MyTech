@@ -1,28 +1,40 @@
 package Model;
 
-import com.mercadopago.client.common.IdentificationRequest;
-import com.mercadopago.client.payment.PaymentCreateRequest;
-import com.mercadopago.client.payment.PaymentPayerRequest;
 
-import java.math.BigDecimal;
+public class Payment { private Long id;
+    private String status;
+    private String detail;
 
-public class Payment {
-    public static PaymentCreateRequest paymentObj() {
+    public Payment(Long id, String status, String detail) {
+        this.id = id;
+        this.status = status;
+        this.detail = detail;
 
-    PaymentCreateRequest createRequest = PaymentCreateRequest.builder()
-            .transactionAmount( new BigDecimal(50))
-            .description("Pagamento Mercado Pago")
-            .paymentMethodId("bolbradesco")
-            .installments(1)
-            .payer( PaymentPayerRequest.builder().email("teste@gmail.com")
-                            .firstName("TesteNome").lastName("TesteSobrenome")
-                .identification(IdentificationRequest.builder()
-                    .type("CPF").number("19119119100").build())
-                        .build()
+    }
 
-            ).build();
+    public Long getId() {
+        return id;
+    }
 
-        return createRequest;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+
     }
 
 }
