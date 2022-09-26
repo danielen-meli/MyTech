@@ -1,8 +1,8 @@
-import Routes.PreferenceRoutes;
+import Routes.Routes;
 
 public class MyTech {
     public static void main(String[] args) {
-     new PreferenceRoutes().routes();
+     new Routes().routes();
 }}
 
 

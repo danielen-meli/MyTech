@@ -24,8 +24,9 @@ public class PreferenceService {
     }
 
     public static String getPreference(String id) throws MPException, MPApiException {
-        Preference preference = new PreferenceClient().get(id);
-        return new Gson().toJson(preference);
+        Token.authoToken();
+        Preference result = new PreferenceClient().get(id);
+        return new Gson().toJson(result);
     }
 
     public String updatePreference(String id, PreferenceRequest preference) throws MPException, MPApiException {

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Preference {
+
     public static List<PreferenceItemRequest> addItems() {
         List<PreferenceItemRequest> items = new ArrayList<>();
         PreferenceItemRequest item =
