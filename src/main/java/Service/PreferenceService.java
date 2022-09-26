@@ -6,6 +6,7 @@ import com.mercadopago.client.preference.PreferenceItemRequest;
 import com.mercadopago.client.preference.PreferenceRequest;
 import com.mercadopago.exceptions.MPApiException;
 import com.mercadopago.exceptions.MPException;
+import com.mercadopago.resources.preference.Preference;
 
 import java.util.List;
 
@@ -23,11 +24,12 @@ public class PreferenceService {
     }
 
     public static String getPreference(String id) throws MPException, MPApiException {
-        return null;
+        Preference preference = new PreferenceClient().get(id);
+        return new Gson().toJson(preference);
     }
 
-    public static String updatePreference(String id, PreferenceRequest pref) throws MPException, MPApiException {
-        //PreferenceClient = new PreferenceClient().update(id, pref);
-        return new Gson().toJson(pref);
+    public String updatePreference(String id, PreferenceRequest preference) throws MPException, MPApiException {
+        Preference result = new PreferenceClient().update(id, preference);
+        return new Gson().toJson(result);
     }
 }

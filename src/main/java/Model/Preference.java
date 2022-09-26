@@ -1,6 +1,5 @@
 package Model;
 
-import com.mercadopago.client.preference.PreferenceClient;
 import com.mercadopago.client.preference.PreferenceItemRequest;
 
 import java.math.BigDecimal;
@@ -8,9 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Preference {
-
-   static PreferenceClient client = new PreferenceClient();
-
     public static List<PreferenceItemRequest> addItems() {
         List<PreferenceItemRequest> items = new ArrayList<>();
         PreferenceItemRequest item =
@@ -25,7 +21,7 @@ public class Preference {
                 PreferenceItemRequest.builder()
                         .title("Item 02")
                         .quantity(2)
-                        .unitPrice(new BigDecimal("30"))
+                        .unitPrice(new BigDecimal("20"))
                         .build();
         items.add(item2);
         return items;

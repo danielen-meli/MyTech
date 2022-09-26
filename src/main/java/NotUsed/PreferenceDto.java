@@ -1,4 +1,4 @@
-package Model;
+package NotUsed;
 
 import com.mercadopago.resources.preference.Preference;
 import com.mercadopago.resources.preference.PreferencePayer;

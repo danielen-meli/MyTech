@@ -1,6 +1,8 @@
 package Routes;
 
+import Model.Payment;
 import Model.Preference;
+import Service.PaymentService;
 import Service.PreferenceService;
 import com.google.gson.Gson;
 
@@ -20,9 +22,10 @@ public class PreferenceRoutes {
                    // return new Gson().toJson(preference);
             });
 
-            get("/feedback", (request, response) -> {
+            post("/payment", (request, response) -> {
                 response.type("application/json");
-                return null;
+                Payment payment = new Gson().fromJson(request.params(id), Payment.class);
+                return PaymentService.createPayment();
             });
 
 
