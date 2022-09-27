@@ -1,11 +1,12 @@
 package Routes;
 
-import Model.Payment;
+import Model.PaymentDto;
 import Model.Preference;
 import Service.PaymentService;
 import Service.PreferenceService;
+import Service.Token;
 import com.google.gson.Gson;
-import com.mercadopago.client.preference.PreferenceClient;
+import com.mercadopago.client.payment.PaymentCreateRequest;
 import com.mercadopago.client.preference.PreferenceRequest;
 
 
@@ -34,14 +35,12 @@ public class Routes {
             });
 
             post("/payments", (request, response) -> {
-                Preference preference = new Gson().fromJson(request.body(), Preference.class);
-                Payment payment = new Gson().fromJson(request.body(), Payment.class);
-                return PaymentService.processPayment(payment);
+               // PaymentCreateRequest paymentCreateRequest = new Gson().fromJson(request.body(), PaymentCreateRequest.class);
+                PaymentDto payment = new Gson().fromJson(request.body(), PaymentDto.class);
+                return PaymentService.createPayment();
             });
 
-
         }
-
 
 }
 
