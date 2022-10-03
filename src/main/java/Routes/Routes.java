@@ -1,5 +1,6 @@
 package Routes;
 
+import Exceptions.MyTechException;
 import Model.PaymentDto;
 import Model.Preference;
 import Service.PaymentService;
@@ -8,6 +9,8 @@ import Service.Token;
 import com.google.gson.Gson;
 import com.mercadopago.client.payment.PaymentCreateRequest;
 import com.mercadopago.client.preference.PreferenceRequest;
+import com.mercadopago.exceptions.MPApiException;
+import com.mercadopago.exceptions.MPException;
 
 
 import static spark.Spark.*;
@@ -40,6 +43,29 @@ public class Routes {
                 return PaymentService.createPayment();
             });
 
+            exception(MyTechException.class, (exception, request, response)-> {
+                String message = exception.getMessage();
+                response.status(500);
+                response.type("application/json");
+                response.body(new Gson().toJson(message));
+
+            });
+
+            exception(MPException.class, (exception, request, response) -> {
+                String message = exception.getMessage();
+                response.type("application/json");
+                response.body(new Gson().toJson(message));
+            });
+
+            exception(MPApiException.class, (exception, request, response) -> {
+                String message = exception.getMessage();
+                response.type("application/json");
+                response.body(new Gson().toJson(message));
+            });
+
+            notFound((request, response) -> {
+                return "{\"message\": \"Not Found: Status 404\"}";
+            });
         }
 
 }

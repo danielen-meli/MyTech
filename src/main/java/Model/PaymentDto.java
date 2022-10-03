@@ -17,7 +17,7 @@ public class PaymentDto {
                     .paymentMethodId("bolbradesco")
                     .installments(1)
                     .payer(PaymentPayerRequest.builder()
-                            .email("test_user_@testuser.com")
+                            .email("test_user_86076503@testuser.com")
                             .firstName("TesteNome").lastName("TesteSobrenome")
                             .identification(
                                     IdentificationRequest.builder()
