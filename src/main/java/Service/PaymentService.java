@@ -10,7 +10,7 @@ import com.mercadopago.exceptions.MPException;
 
 
 public class PaymentService {
-    public static String createPayment() throws MyTechException, MPException, MPApiException {
+    public static String createPayment() throws MyTechException {
         try{
             Token.authoToken();
             PaymentClient paymentClient = new PaymentClient();
@@ -18,13 +18,7 @@ public class PaymentService {
             return new Gson().toJson(paymentClient.create(paymentCreateRequest));
             // teria que mudar o objeto - um DTO da resposta - para setar os valores da resposta e ai então a resposta
 
-        } catch (MPApiException mpApiException){
-            throw new MyTechException(mpApiException);
-        }
-        catch (MPException mpException){
-            throw new MyTechException(mpException);
-        }
+        } catch (MPApiException | MPException exception){
+            throw new MyTechException("Erro ao criar ordem de pagamento");
     }
-
-
-}
+}}

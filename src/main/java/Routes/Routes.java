@@ -63,8 +63,9 @@ public class Routes {
                 response.body(new Gson().toJson(message));
             });
 
-            notFound((request, response) -> {
-                return "{\"message\": \"Not Found: Status 404\"}";
+            notFound((req, res) -> {
+                res.type("application/json");
+                return "{\"message\":\"Custom 404\"}";
             });
         }
 

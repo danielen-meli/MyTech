@@ -24,7 +24,7 @@ public class PreferenceService {
         return new Gson().toJson(client.create(request));
         }
         catch (MPApiException | MPException exception){
-            throw new MyTechException(exception);
+            throw new MyTechException("Erro ao criar preferencia");
         }
     }
 
@@ -35,7 +35,7 @@ public class PreferenceService {
             return new Gson().toJson(result);
         }
         catch (MPApiException | MPException exception){
-            throw new MyTechException(exception);
+            throw new MyTechException("Erro ao buscar por preferencia");
         }
     }
 
@@ -43,8 +43,9 @@ public class PreferenceService {
        try{ Token.authoToken();
         Preference pref_up  = new PreferenceClient().update(id, body);
         return new Gson().toJson(pref_up);}
+       
        catch (MPApiException | MPException exception){
-           throw new MyTechException(exception);
+           throw new MyTechException("Erro ao fazer update de preferencia");
        }
     }
 
